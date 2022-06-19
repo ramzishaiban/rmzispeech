@@ -1,0 +1,36 @@
+@use '@carbon/react/scss/components/button/' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/spacing' as *;
+
+.transcript-box {
+  background-color: $layer-02;
+  border-bottom: 1px solid $border-strong-01;
+  min-height: 10rem;
+  padding: $spacing-05;
+
+  span {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    letter-spacing: 0.16px;
+
+    &.speaker-label {
+      &--0 {
+        font-weight: 700;
+        color: $button-primary;
+      }
+
+      &--1 {
+        font-weight: 700;
+        color: $button-secondary;
+      }
+    }
+  }
+
+  .keyword-info-trigger {
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.25rem;
+    letter-spacing: 0.16px;
+  }
+}

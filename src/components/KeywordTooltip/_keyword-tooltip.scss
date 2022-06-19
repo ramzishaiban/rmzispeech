@@ -1,0 +1,9 @@
+@use '@carbon/react/scss/spacing' as *;
+
+.keyword-tooltip {
+  font-family: 'IBM Plex Mono';
+
+  p:first-child {
+    padding-bottom: $spacing-02;
+  }
+}

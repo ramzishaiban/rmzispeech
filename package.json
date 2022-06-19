@@ -1,0 +1,106 @@
+{
+  "name": "@ibm-watson/speech-to-text-code-pattern",
+  "version": "0.1.0",
+  "proxy": "http://localhost:5000",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^6.4.3",
+    "@types/react": "^18.0.12",
+    "body-parser": "^1.20.0",
+    "buffer": "^6.0.3",
+    "concurrently": "^7.2.2",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.1",
+    "es6-promise": "^4.2.8",
+    "express": "^4.18.1",
+    "express-rate-limit": "^6.4.0",
+    "express-secure-only": "^0.2.1",
+    "helmet": "^5.1.0",
+    "husky": "^8.0.1",
+    "ibm-watson": "^7.0.0",
+    "isomorphic-fetch": "^3.0.0",
+    "lint-staged": "^13.0.1",
+    "morgan": "^1.10.0",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "vcap_services": "^0.7.1",
+    "watson-speech": "^0.39.1"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm:client\" \"npm:server\"",
+    "client": "craco start",
+    "server": "nodemon server.js",
+    "start": "node server.js",
+    "build": "INLINE_RUNTIME_CHUNK=false craco build",
+    "test": "npm run test:components && npm run test:integration",
+    "test:components": "cross-env CI=true craco test --env=jsdom --passWithNoTests",
+    "test:integration": "JEST_PUPPETEER_CONFIG='test/jest-puppeteer.config.js' jest test -c test/jest.config.js",
+    "prepare": "husky install"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "engines": {
+    "node": "^16.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "./**/*.{js,scss,html,png,yaml,yml}": [
+      "npm run build"
+    ]
+  },
+  "devDependencies": {
+    "@carbon/react": "^1.5.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/user-event": "^14.2.0",
+    "jest": "28.1.1",
+    "jest-puppeteer": "^6.1.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.7.0",
+    "puppeteer": "^14",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-json-tree": "^0.17.0",
+    "react-json-view": "^1.21.3",
+    "react-scripts": "^5.0.1",
+    "sass": "^1.52.3",
+    "webpack": "^5.73.0"
+  },
+  "overrides": {
+    "@craco/craco": {
+      "react-scripts": "5.0.1"
+    }
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true
+  },
+  "nodemonConfig": {
+    "watch": [
+      "app.js",
+      "config/**/*.js",
+      "server.js"
+    ],
+    "ext": "js",
+    "ignore": [
+      ".git",
+      "node_modules",
+      "public",
+      "src",
+      "test"
+    ],
+    "delay": 500
+  }
+}
